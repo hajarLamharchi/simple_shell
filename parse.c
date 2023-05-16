@@ -8,7 +8,7 @@
 
 char **parse_input(char s[])
 {
-	char *d = " ";
+	char *d = " \n";
 	char **buff = NULL;
 	int i = 0, j;
 	char *token;

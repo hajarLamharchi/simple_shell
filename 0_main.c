@@ -11,32 +11,32 @@ int main(void)
 	char **buff;
 	int i = 0;
 
-	line = print_prompt();
-	if (line == NULL)
+	while (1)
 	{
-		perror("Error");
-		return (1);
-	}
+		line = print_prompt();
+		if (line == NULL)
+		{
+			perror("Error");
+			return (1);
+		}
+		printf("%s", line);
+		buff = parse_input(line);
+		if (buff == NULL)
+		{
+			perror("Error");
+			free(line);
+			return (1);
+		}
+		while (buff[i] != NULL)
+		{
+			printf("%s\n", buff[i]);
+			free(buff[i]);
+			i++;
+		}
+		exec(buff);
 
-	printf("%s", line);
-
-	buff = parse_input(line);
-	if (buff == NULL)
-	{
-		perror("Error");
+		free(buff);
 		free(line);
-		return (1);
 	}
-	while (buff[i] != NULL)
-	{
-		printf("%s\n", buff[i]);
-		free(buff[i]);
-		i++;
-	}
-	exec(buff);
-
-	free(buff);
-	free(line);
-
 	return (0);
 }

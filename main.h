@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include<sys/wait.h>
+#include <signal.h>
 
 char *print_prompt();
 char **parse_input(char *s);
