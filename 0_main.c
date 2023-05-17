@@ -10,6 +10,7 @@ int main(void)
 	char *line = NULL;
 	char **buff;
 	int i = 0;
+	pid_t pid;
 
 	while (1)
 	{
@@ -33,7 +34,20 @@ int main(void)
 			free(buff[i]);
 			i++;
 		}
-		exec(buff);
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("Error");
+			return (1);
+		}
+		else if (pid == 0)
+		{
+			exec(buff);
+		}
+		else
+		{
+			wait(NULL);
+		}
 
 		free(buff);
 		free(line);
