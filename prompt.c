@@ -13,7 +13,16 @@ char *print_prompt()
 	printf("$ ");
 	if (getline(&line, &len, stdin) == -1)
 	{
-		return (NULL);
+		if (feof(stdin))
+		{
+			free(line);
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			free(line);
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (line);
 }

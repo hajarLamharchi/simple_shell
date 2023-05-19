@@ -16,13 +16,15 @@ char **parse_input(char s[])
 
 	if (len == 0)
 	{
-		return (NULL);
+		perror("ERROR");
+		exit(EXIT_FAILURE);
 	}
 
 	buff = malloc((len + 1) * sizeof(char *));
 	if (buff == NULL)
 	{
-		return (NULL);
+		perror("Error");
+		exit(EXIT_FAILURE);
 	}
 
 	token = strtok(s, d);

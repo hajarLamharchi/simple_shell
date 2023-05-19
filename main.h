@@ -11,6 +11,6 @@
 
 char *print_prompt();
 char **parse_input(char *s);
-void exec(char **buff);
+int create_process(char **buff);
 
 #endif
