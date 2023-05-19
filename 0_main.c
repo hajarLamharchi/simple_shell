@@ -12,8 +12,8 @@ int main(void)
 
 	while (1)
 	{
-		line = print_prompt();
-		printf("%s", line);
+		printf("$ ");
+		line = get_line();
 		buff = parse_input(line);
 		create_process(buff);
 

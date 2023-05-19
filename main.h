@@ -9,7 +9,7 @@
 #include<sys/wait.h>
 #include <signal.h>
 
-char *print_prompt();
+char *get_line();
 char **parse_input(char *s);
 int create_process(char **buff);
 
