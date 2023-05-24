@@ -40,7 +40,8 @@ int main(__attribute__((unused)) int argc,
 		{
 			create_process(buff);
 		}
-
+		free(buff);
+		free(line);
 		path = getenv("PATH");
 		dir = strtok(path, ":");
 
@@ -51,8 +52,6 @@ int main(__attribute__((unused)) int argc,
 			strcat(file_path, line);
 
 		}
-		free(buff);
-		free(line);
 	}
 	return (0);
 }
