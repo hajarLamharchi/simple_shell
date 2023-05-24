@@ -11,7 +11,7 @@
 #include <signal.h>
 
 char *get_line();
-char **parse_input(char *s);
-int create_process(char **buff);
+char **parse_line(char s[]);
+int create_process(char **buff, char **env);
 
 #endif

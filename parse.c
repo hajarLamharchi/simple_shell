@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * parse_input - tokenize the input
+ * parse_line - tokenize the input
  * @s: the command entered by the user
  * Return: parsed input
  */
 
-char **parse_input(char s[])
+char **parse_line(char s[])
 {
-	char *d = " \n";
+	char *d = " ";
 	char **buff = NULL;
 	int i = 0, j;
 	char *token;
@@ -16,15 +16,15 @@ char **parse_input(char s[])
 
 	if (len == 0)
 	{
-		perror("ERROR");
-		exit(EXIT_SUCCESS);
+		perror("Error");
+		exit(EXIT_FAILURE);
 	}
 
 	buff = malloc((len + 1) * sizeof(char *));
 	if (buff == NULL)
 	{
 		perror("Error");
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 
 	token = strtok(s, d);

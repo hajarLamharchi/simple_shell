@@ -3,10 +3,11 @@
 /**
  * create_process - create a new child process with fork
  * @buff: points to the command entered by the user
+ * @env: environment
  * Return: 0 on succes 1 otherwise
  */
 
-int create_process(char **buff)
+int create_process(char **buff, char **env)
 {
 	pid_t pid;
 	int status;
@@ -14,16 +15,17 @@ int create_process(char **buff)
 	pid = fork();
 	if (pid == -1)
 	{
+		free(buff);
 		perror("Error");
 		return (1);
 	}
 	else if (pid == 0)
 	{
-		if (execve(buff[0], buff, NULL) == -1)
+		if (execve(buff[0], buff, env) == -1)
 		{
-			perror("Error");
-			exit(EXIT_SUCCESS);
+			printf("./shell: No such file or directory\n");
 		}
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
