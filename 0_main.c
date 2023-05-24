@@ -14,11 +14,11 @@ int main(__attribute__((unused)) int argc,
 {
 	char *line = NULL;
 	char **buff;
-	unsigned int i = 0;
+	unsigned int i;
 
 	while (1)
 	{
-		putchar('$');
+		printf("$ ");
 		line = get_line();
 		buff = parse_input(line);
 		if (strcmp(buff[0], "exit") == 0)
@@ -27,6 +27,7 @@ int main(__attribute__((unused)) int argc,
 		}
 		else if (strcmp(buff[0], "env") == 0)
 		{
+			i = 0;
 			while (env[i] != NULL)
 			{
 				printf("%s\n", env[i]);
