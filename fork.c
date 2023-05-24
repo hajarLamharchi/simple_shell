@@ -9,6 +9,7 @@
 int create_process(char **buff)
 {
 	pid_t pid;
+	int status;
 
 	pid = fork();
 	if (pid == -1)
@@ -21,12 +22,12 @@ int create_process(char **buff)
 		if (execve(buff[0], buff, NULL) == -1)
 		{
 			perror("Error");
+			exit(EXIT_SUCCESS);
 		}
-		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		wait(NULL);
+		waitpid(pid, &status, 0);
 	}
 	return (0);
 }

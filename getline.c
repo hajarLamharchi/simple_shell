@@ -20,7 +20,7 @@ char *get_line()
 		else
 		{
 			free(line);
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	return (line);
