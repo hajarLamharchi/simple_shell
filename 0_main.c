@@ -19,7 +19,6 @@ int main(__attribute__((unused)) int argc,
 	char* path;
 	char* dir;
 
-
 	while (1)
 	{
 		putchar('$');
