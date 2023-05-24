@@ -17,7 +17,7 @@ int main(__attribute__((unused)) int argc,
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			printf("$ ");
+			write(1, "$ ", 2);
 		line = get_line();
 		buff = parse_line(line);
 		if (strcmp(buff[0], "exit") == 0)
@@ -27,7 +27,7 @@ int main(__attribute__((unused)) int argc,
 			i = 0;
 			while (env[i])
 			{
-				printf("%s\n", env[i]);
+				write(1, env[i], strlen(env[i]));
 				i++;
 			}
 		}

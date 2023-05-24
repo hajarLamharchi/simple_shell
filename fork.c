@@ -23,7 +23,7 @@ int create_process(char **buff, char **env)
 	{
 		if (execve(buff[0], buff, env) == -1)
 		{
-			printf("./shell: No such file or directory\n");
+			write(1, "./shell: No such file or directory\n", 50);
 		}
 		exit(EXIT_FAILURE);
 	}
