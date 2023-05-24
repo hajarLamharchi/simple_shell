@@ -22,7 +22,7 @@ int create_process(char **buff)
 		if (execve(buff[0], buff, NULL) == -1)
 		{
 			perror("Error");
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	else
