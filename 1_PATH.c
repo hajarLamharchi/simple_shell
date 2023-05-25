@@ -1,14 +1,12 @@
 #include "main.h"
-/**
- * path - function that handles path
- * Return: void
- */
+
 int path(void)
 {
 	char file_path[MAX_PATH_LENGTH];
 	char *path;
 	char *dir;
 	char *line = NULL;
+	int command_exists = 0;
 
 	path = getenv("PATH");
 	line = get_line();
@@ -23,11 +21,28 @@ int path(void)
 			strcat(file_path, "/");
 			strcat(file_path, line);
 
+			if (access(file_path, F_OK) == 0)
+			{
+				command_exists = 1;
+				break;
+			}
+
 			dir = strtok(NULL, ":");
 		}
 
 		free(line);
+
+		if (command_exists)
+		{
+			break;
+		}
 	}
-	return (0);
+
+	if (!command_exists)
+	{
+		printf("Command does not exist.\n");
+	}
+
+	return 0;
 }
 
