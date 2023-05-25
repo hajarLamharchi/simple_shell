@@ -26,6 +26,7 @@ int create_process(char **buff, char **env)
 			write(1, "./shell: No such file or directory\n", 50);
 		}
 		exit(EXIT_FAILURE);
+		return (1);
 	}
 	else
 	{
