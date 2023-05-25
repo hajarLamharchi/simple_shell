@@ -15,7 +15,7 @@ int create_process(char **buff, char **env)
 	pid = fork();
 	if (pid == -1)
 	{
-		free(buff);
+		free_buff(buff);
 		perror("Error");
 		return (1);
 	}
