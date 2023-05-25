@@ -37,7 +37,7 @@ int main(__attribute__((unused)) int argc,
 			print_env(env);
 		else
 		{
-			create_process(buff, env);
+			create_process(buff);
 			free_buff(buff);
 		}
 	}

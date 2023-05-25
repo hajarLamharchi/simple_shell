@@ -7,7 +7,7 @@
  * Return: 0 on succes 1 otherwise
  */
 
-int create_process(char **buff, char **env)
+int create_process(char **buff)
 {
 	pid_t pid;
 	int status;
@@ -21,7 +21,7 @@ int create_process(char **buff, char **env)
 	}
 	else if (pid == 0)
 	{
-		if (execve(buff[0], buff, env) == -1)
+		if (execvp(buff[0], buff) == -1)
 		{
 			write(1, "./shell: No such file or directory\n", 50);
 		}
