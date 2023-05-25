@@ -3,7 +3,6 @@
 /**
  * create_process - create a new child process with fork
  * @buff: points to the command entered by the user
- * @env: environment
  * Return: 0 on succes 1 otherwise
  */
 
