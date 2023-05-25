@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int argc,
 {
 	char *line;
 	char **buff;
-	unsigned int i;
+	unsigned int i, j;
 
 	while (1)
 	{
@@ -28,11 +28,17 @@ int main(__attribute__((unused)) int argc,
 			while (env[i])
 			{
 				write(1, env[i], strlen(env[i]));
+				write(1, "\n", 2);
 				i++;
 			}
 		}
 		else
 			create_process(buff, env);
 	}
+	j = 0;
+	while (buff[j])
+		free(buff[j++]);
+	free(buff);
+	free(line);
 	return (0);
 }
