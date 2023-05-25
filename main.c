@@ -12,14 +12,21 @@ int main(__attribute__((unused)) int argc,
 {
 	char *line;
 	char **buff;
-	unsigned int i, j;
+	unsigned int i;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 			write(1, "$ ", 2);
 		line = get_line();
+		if (line == NULL)
+			break;
 		buff = parse_line(line);
+		if (buff == NULL)
+		{
+			free(line);
+			continue;
+		}
 		if (strcmp(buff[0], "exit") == 0)
 			break;
 		else if (strcmp(buff[0], "env") == 0)
@@ -34,11 +41,10 @@ int main(__attribute__((unused)) int argc,
 		}
 		else
 			create_process(buff, env);
+		free_buff(buff);
+
 	}
-	j = 0;
-	while (buff[j])
-		free(buff[j++]);
-	free(buff);
+	free_buff(buff);
 	free(line);
 	return (0);
 }

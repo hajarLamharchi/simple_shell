@@ -8,14 +8,12 @@ char **parse_line(char s[])
 {
 	char *d = " ", *token;
 	char **buff = NULL;
-	int i = 0, j, k = 0;
+	int i = 0, k = 0;
 	int len = strlen(s);
 
+
 	if (len == 0)
-	{
-		perror("Error");
-		exit(EXIT_FAILURE);
-	}
+		return (NULL);
 	buff = malloc((len + 1) * sizeof(char *));
 	if (buff == NULL)
 	{
@@ -34,13 +32,12 @@ char **parse_line(char s[])
 		buff[i] = malloc(strlen(token) + 1);
 		if (buff[i] == NULL)
 		{
-			for (j = 0; j < i; j++)
-				free(buff[j]);
-			free(buff);
+			free_buff(buff);
 			return (NULL);
 		}
 		strcpy(buff[i], token);
 		token = strtok(NULL, d);
+		free(token);
 		i++;
 	}
 	buff[i] = NULL;

@@ -16,7 +16,7 @@ char *get_line()
 	if (n_char == -1)
 	{
 		free(line);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	while (line[i])
 	{
