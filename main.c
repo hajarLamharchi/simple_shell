@@ -7,12 +7,11 @@
  * Return: Always 0
  */
 int main(__attribute__((unused)) int argc,
-		__attribute__((unused)) char **argv,
-		char **env)
+		__attribute__((unused)) char **argv, char **env)
 {
 	char *line;
 	char **buff;
-	unsigned int i;
+	unsigned int i = 0;
 
 	while (1)
 	{
@@ -36,7 +35,6 @@ int main(__attribute__((unused)) int argc,
 		}
 		else if (strcmp(buff[0], "env") == 0)
 		{
-			i = 0;
 			while (env[i])
 			{
 				write(1, env[i], strlen(env[i]));
@@ -49,7 +47,6 @@ int main(__attribute__((unused)) int argc,
 			create_process(buff, env);
 			free_buff(buff);
 		}
-
 	}
 	return (0);
 }
