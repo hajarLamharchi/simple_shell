@@ -11,7 +11,6 @@ int main(__attribute__((unused)) int argc,
 {
 	char *line;
 	char **buff;
-	unsigned int i = 0;
 
 	while (1)
 	{
@@ -22,26 +21,22 @@ int main(__attribute__((unused)) int argc,
 		{
 			break;
 		}
+		if (strlen(line) <= 1)
+		{
+			free(line);
+			continue;
+		}
 		buff = parse_line(line);
 		free(line);
 		if (buff == NULL)
-		{
 			continue;
-		}
 		if (strcmp(buff[0], "exit") == 0)
 		{
 			free_buff(buff);
 			break;
 		}
 		else if (strcmp(buff[0], "env") == 0)
-		{
-			while (env[i])
-			{
-				write(1, env[i], strlen(env[i]));
-				write(1, "\n", 2);
-				i++;
-			}
-		}
+			print_env(env);
 		else
 		{
 			create_process(buff, env);

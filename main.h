@@ -13,5 +13,6 @@ char *get_line();
 char **parse_line(char s[]);
 int create_process(char **buff, char **env);
 void free_buff(char **buff);
+void print_env(char **env);
 
 #endif
