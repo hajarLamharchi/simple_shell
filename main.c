@@ -21,18 +21,19 @@ int main(__attribute__((unused)) int argc,
 		line = get_line();
 		if (line == NULL)
 		{
-			free(line);
 			break;
 		}
 		buff = parse_line(line);
+		free(line);
 		if (buff == NULL)
 		{
-			free_buff(buff);
-			free(line);
 			continue;
 		}
 		if (strcmp(buff[0], "exit") == 0)
+		{
+			free_buff(buff);
 			break;
+		}
 		else if (strcmp(buff[0], "env") == 0)
 		{
 			i = 0;
@@ -44,11 +45,11 @@ int main(__attribute__((unused)) int argc,
 			}
 		}
 		else
+		{
 			create_process(buff, env);
-		free_buff(buff);
+			free_buff(buff);
+		}
 
 	}
-	free_buff(buff);
-	free(line);
 	return (0);
 }
