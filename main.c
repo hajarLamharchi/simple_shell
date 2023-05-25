@@ -18,9 +18,7 @@ int main(__attribute__((unused)) int argc,
 			write(1, "$ ", 2);
 		line = get_line();
 		if (line == NULL)
-		{
 			break;
-		}
 		if (strlen(line) <= 1)
 		{
 			free(line);

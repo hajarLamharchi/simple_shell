@@ -8,7 +8,7 @@ char **parse_line(char s[])
 {
 	char *d = " ", *token;
 	char **buff = NULL;
-	int i = 0, k = 0;
+	int i = 0, k;
 	int len = strlen(s);
 
 
@@ -24,6 +24,7 @@ char **parse_line(char s[])
 	token = strtok(s, d);
 	while (token != NULL)
 	{
+		k = 0;
 		while (token[k])
 		{
 			if (token[k] == '\n')
@@ -38,7 +39,6 @@ char **parse_line(char s[])
 		}
 		strcpy(buff[i], token);
 		token = strtok(NULL, d);
-		free(token);
 		i++;
 	}
 	buff[i] = NULL;
