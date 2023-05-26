@@ -6,7 +6,7 @@
  */
 char **parse_line(char s[])
 {
-	char *d = " \t\n", *token;
+	char *d = " \t\n\r\a", *token;
 	char **buff = NULL;
 	int i = 0, k;
 	int len = strlen(s);
