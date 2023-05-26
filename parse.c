@@ -25,21 +25,24 @@ char **parse_line(char s[])
 	while (token != NULL)
 	{
 		k = 0;
-		while (token[k])
+		while (token[k] != '\0')
 		{
 			if (token[k] == '\n')
 				token[k] = '\0';
 			k++;
 		}
-		buff[i] = malloc(strlen(token) + 1);
-		if (buff[i] == NULL)
+		if (k > 0)
 		{
-			free_buff(buff);
-			return (NULL);
+			buff[i] = malloc(strlen(token) + 1);
+			if (buff[i] == NULL)
+			{
+				free_buff(buff);
+				return (NULL);
+			}
+			strcpy(buff[i], token);
+			token = strtok(NULL, d);
+			i++;
 		}
-		strcpy(buff[i], token);
-		token = strtok(NULL, d);
-		i++;
 	}
 	buff[i] = NULL;
 	return (buff);
